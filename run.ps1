@@ -2,9 +2,14 @@
 # run service-b -> mvn spring-boot:run
 # run ui-b -> mvn spring-boot:run
 
+function Set-ExecutionPolicyToRunScripts {
+    # run the command in a new process
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"
+}
+
 function Start-MySQLOnDocker {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c docker run -p 3000:3306 --name mysql-server -e MYSQL_ROOT_PASSWORD=toor -mysql:latest"
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c docker run -p 3000:3306 --name mysql-server -e MYSQL_ROOT_PASSWORD=toor mysql:latest"
 }
 
 function Start-DiscoveryB {
