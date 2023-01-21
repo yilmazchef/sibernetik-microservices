@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
-@FeignClient(name = "service-b", url = "http://localhost:8080")
+@FeignClient(name = "service-b", url = "http://localhost:8000")
 public interface ServiceB {
 
     @GetMapping ( "/greeting" )

@@ -1,14 +1,14 @@
 server:
-  port: 9002
+  port: 9000
 #  ssl:
 #    key-store: classpath:keystore.p12
-#    key-store-password: intec-123
+#    key-store-password: sibernetik-123
 #    keyStoreType: PKCS12
 #    keyAlias: tomcat
 
 spring:
   application:
-    name: cloud-discovery
+    name: discovery-b
 
   output:
     ansi:
@@ -17,7 +17,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: "http://localhost:9002/eureka/"
+      defaultZone: "http://localhost:9000/eureka/"
     registerWithEureka: false
     fetchRegistry: false
     healthcheck:
