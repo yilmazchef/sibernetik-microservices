@@ -22,6 +22,8 @@ function Start-UIB {
     Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:run" -WorkingDirectory .\ui-b\
 }
 
+Start-MySQLOnDocker
+Start-Sleep 10
 Start-DiscoveryB
 Start-Sleep 10
 Start-ServiceB
