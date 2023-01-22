@@ -16,7 +16,7 @@ function Build-UIB {
 }
 
 Build-DiscoveryB
-Build-Sleep 10
+Start-Sleep 10
 Build-ServiceB
-Build-Sleep 10
+Start-Sleep 10
 Build-UIB
