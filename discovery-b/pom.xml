@@ -17,6 +17,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <java.version>11</java.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <!-- Spring Boot Docker Image -->
+        <spring-boot-docker-image>yilmazchef/discovery-b</spring-boot-docker-image>
+        <spring-boot-docker-image-version>1.0</spring-boot-docker-image-version>
+    </properties>
+
     <repositories>
         <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
 
@@ -93,6 +101,13 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <!-- Docker Image Settings -->
+                    <image>
+                        <name>${spring-boot-docker-image}:${spring-boot-docker-image-version}</name>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                    </image>
                 </configuration>
             </plugin>
 

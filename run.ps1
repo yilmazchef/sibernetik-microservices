@@ -4,17 +4,17 @@
 
 function Start-DiscoveryB {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:run" -WorkingDirectory .\discovery-b\
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\discovery-b\
 }
 
 function Start-ServiceB {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:run" -WorkingDirectory .\service-b\
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\service-b\
 }
 
 function Start-UIB {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:run" -WorkingDirectory .\ui-b\
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\ui-b\
 }
 
 Start-DiscoveryB
