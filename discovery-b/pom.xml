@@ -5,9 +5,9 @@
 
 
     <groupId>be.intecbrussel.microservices</groupId>
-    <artifactId>cloud-discovery</artifactId>
-    <version>latest</version>
-    <name>cloud-discovery</name>
+    <artifactId>discovery-b</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>discovery-b</name>
     <description>Spring boot cloud discovery server based on Netflix Eureka services.</description>
     <packaging>jar</packaging>
 
