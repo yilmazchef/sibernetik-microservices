@@ -1,16 +1,16 @@
 # mvn spring-boot:build-image -Dspring-boot.build-image.imageName=discovery-b
 
-function Build-DiscoveryB {
+function New-ContainerImageDiscoveryB {
     # run the command in a new process
     Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:build-image -Dspring-boot.build-image.imageName=discovery-b" -WorkingDirectory .\discovery-b\
 }
 
-function Build-ServiceB {
+function New-ContainerImageServiceB {
     # run the command in a new process
     Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:build-image -Dspring-boot.build-image.imageName=service-b" -WorkingDirectory .\service-b\
 }
 
-function Build-UIB {
+function New-ContainerImageUIB {
     # run the command in a new process
     Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn spring-boot:build-image -Dspring-boot.build-image.imageName=ui-b" -WorkingDirectory .\ui-b\
 }
