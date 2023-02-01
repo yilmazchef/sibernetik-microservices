@@ -3,16 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>be.intecbrussel.microservices</groupId>
-    <artifactId>service-b</artifactId>
-    <name>service-b</name>
+    <groupId>org.sibernetik</groupId>
+    <artifactId>service-sibernetik</artifactId>
+    <name>service-sibernetik</name>
     <version>0.0.1-SNAPSHOT</version>
-    <description>service-b</description>
+    <description>service-sibernetik</description>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>org.sibernetik</groupId>
-        <artifactId>parent-b</artifactId>
+        <artifactId>parent-sibernetik</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

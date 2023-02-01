@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>be.intecbrussel.microservices</groupId>
-    <artifactId>discovery-b</artifactId>
+    <groupId>org.sibernetik</groupId>
+    <artifactId>discovery-sibernetik</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>discovery-b</name>
+    <name>discovery-sibernetik</name>
     <description>Spring boot cloud discovery server based on Netflix Eureka services.</description>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>org.sibernetik</groupId>
-        <artifactId>parent-b</artifactId>
+        <artifactId>parent-sibernetik</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

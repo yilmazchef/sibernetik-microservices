@@ -4,26 +4,19 @@
 
 function Start-DiscoveryB {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\discovery-b\
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\discovery-sibernetik\
 }
 
 function Start-ServiceB {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\service-b\
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\service-sibernetik\
 }
 
 function Start-UIB {
     # run the command in a new process
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\ui-b\
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mvn clean install && mvn spring-boot:run" -WorkingDirectory .\ui-sibernetik\
 }
 
-function Start-DB-B() {
-    # run the command in a new process and start mysqld with the --console option and with username: sibernetik and password: sibernetik
-    Start-Process -FilePath "cmd.exe" -ArgumentList "/c mysqld --console --user=sibernetik --password=sibernetik" -WorkingDirectory .
-}
-
-Start-DB-B
-Start-Sleep 10
 Start-DiscoveryB
 Start-Sleep 10
 Start-ServiceB

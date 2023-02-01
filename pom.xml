@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>org.sibernetik</groupId>
-    <artifactId>parent-b</artifactId>
+    <artifactId>parent-sibernetik</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>parent-b</name>
-    <description>Spring Boot microservice module for Fooda product backend</description>
+    <name>parent-sibernetik</name>
+    <description>parent pom project for sibernetik</description>
     <packaging>pom</packaging>
 
     
@@ -28,9 +28,9 @@
     </properties>
 
     <modules>
-        <module>discovery-b</module>
-        <module>service-b</module>
-        <module>ui-b</module>
+        <module>discovery-sibernetik</module>
+        <module>service-sibernetik</module>
+        <module>ui-sibernetik</module>
     </modules>
 
    
