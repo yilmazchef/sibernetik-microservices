@@ -1820,7 +1820,7 @@ ENV WORDPRESS_DB_PASSWORD={0}
 ENV WORDPRESS_DB_NAME={0}
 
 ## COPY ./wp-content /var/www/html/wp-content
-## COPY ./wp-config.php /var/www/html/wp-config.php
+COPY ./wp-config.php /var/www/html/wp-config.php
 ## COPY ./wp-config-docker.php /var/www/html/wp-config-docker.php
 ## COPY ./wp-config-local.php /var/www/html/wp-config-local.php
 
@@ -1859,11 +1859,11 @@ services:
         restart: unless-stopped
         container_name: ui-{0}
         ports:
-            - "80"
+            - "8888:80"
         depends_on:
             - db-{0}
         environment:
-            WORDPRESS_DB_HOST: db-{0}:3306
+            WORDPRESS_DB_HOST: db-{0}:3333
             WORDPRESS_DB_USER: {0}
             WORDPRESS_DB_PASSWORD: {0}
             WORDPRESS_DB_NAME: {0}
@@ -1879,7 +1879,7 @@ services:
         container_name: db-{0}
         restart: unless-stopped
         ports:
-            - "3306"
+            - "3333:3306"
         environment:
             MYSQL_DATABASE: {0}
             MYSQL_USER: {0}
@@ -1911,7 +1911,7 @@ services:
             ADMINER_AUTOLOGIN: 1
             ADMINER_NAME: DB Admin for {0}
         ports:
-            - "8080"
+            - "9999:8080"
         networks:
             - {0}-net
             - cloud-net
