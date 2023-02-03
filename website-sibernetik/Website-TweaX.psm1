@@ -1820,7 +1820,7 @@ ENV WORDPRESS_DB_PASSWORD={0}
 ENV WORDPRESS_DB_NAME={0}
 
 ## COPY ./wp-content /var/www/html/wp-content
-COPY ./wp-config.php /var/www/html/wp-config.php
+## COPY ./wp-config.php /var/www/html/wp-config.php
 ## COPY ./wp-config-docker.php /var/www/html/wp-config-docker.php
 ## COPY ./wp-config-local.php /var/www/html/wp-config-local.php
 
@@ -1863,7 +1863,7 @@ services:
         depends_on:
             - db-{0}
         environment:
-            WORDPRESS_DB_HOST: db-{0}:3333
+            WORDPRESS_DB_HOST: db-{0}
             WORDPRESS_DB_USER: {0}
             WORDPRESS_DB_PASSWORD: {0}
             WORDPRESS_DB_NAME: {0}
@@ -2060,7 +2060,7 @@ The `WORDPRESS_DB_NAME` needs to already exist on the given MySQL server; it wil
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-wordpress -p 8080:80 -d wordpress
+$ docker run --name "some-wordpress" -p "8888:80" -d wordpress
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -2084,7 +2084,7 @@ Currently, this is supported for `WORDPRESS_DB_HOST`, `WORDPRESS_DB_USER`, `WORD
 Example `stack.yml` for `wordpress`:
 
 ```yaml
-version: '3.1'
+version: '3.7'
 
 services:
 
@@ -2092,7 +2092,7 @@ services:
     image: wordpress
     restart: always
     ports:
-      - 8080:80
+      - "8888:80"
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
@@ -2418,9 +2418,9 @@ function Save-DockerComposeYaml() {
     $Yaml | Out-File -FilePath ".\docker-compose.yml" -Encoding UTF8 -Force
 
     docker pull pmsipilot/docker-compose-viz
-
-    docker tag pmsipilot/docker-compose-viz cloud-netmap:latest
-    docker run --rm -it --name dcv -v ${pwd}:/input cloud-netmap render -m image docker-compose.yml --force
+    docker tag pmsipilot/docker-compose-viz yilmazchef/sibernetik-netmap:latest
+    
+    docker run --rm -it --name dcv -v ${pwd}:/input yilmazchef/sibernetik-netmap render -m image docker-compose.yml --force
 }
 
 function Save-Dockerfile() {

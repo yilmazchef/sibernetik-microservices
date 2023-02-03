@@ -1,0 +1,97 @@
+version: '3.7'
+
+services:
+
+    ########################################################################################################################################################
+
+    ### sibernetik Wordpress Docker composition settings for ui-sibernetik and db-sibernetik ###
+
+    ########################################################################################################################################################
+    
+    ui-sibernetik:
+        image: docker.io/yilmazchef/ui-sibernetik:latest
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        container_name: ui-sibernetik
+        ports:
+            - "8888:80"
+        depends_on:
+            - db-sibernetik
+        environment:
+            WORDPRESS_DB_HOST: db-sibernetik
+            WORDPRESS_DB_USER: sibernetik
+            WORDPRESS_DB_PASSWORD: sibernetik
+            WORDPRESS_DB_NAME: sibernetik
+        volumes:
+            - disk-ui:/var/www/html
+        networks:
+            - sibernetik-net
+            - cloud-net
+
+
+    db-sibernetik:
+        image: docker.io/yilmazchef/db-sibernetik:latest
+        container_name: db-sibernetik
+        restart: unless-stopped
+        ports:
+            - "3333:3306"
+        environment:
+            MYSQL_DATABASE: sibernetik
+            MYSQL_USER: sibernetik
+            MYSQL_PASSWORD: sibernetik
+            MYSQL_ROOT_PASSWORD: sibernetik
+            MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+            MYSQL_RANDOM_ROOT_PASSWORD: "no"
+            MYSQL_ONETIME_PASSWORD: "no"
+            MYSQL_INITDB_SKIP_TZINFO: "no"
+        volumes:
+            - disk-db:/var/lib/mysql/
+        networks:
+            - sibernetik-net
+            - cloud-net
+    
+    dba-sibernetik:
+        image: docker.io/yilmazchef/dba-sibernetik:latest
+        container_name: dba-sibernetik
+        restart: unless-stopped
+        depends_on:
+            db-sibernetik:
+                condition: service_started
+        environment:
+            ADMINER_DB: sibernetik
+            ADMINER_DRIVER: mysql
+            ADMINER_PASSWORD: sibernetik
+            ADMINER_SERVER: db-sibernetik
+            ADMINER_USERNAME: sibernetik
+            ADMINER_AUTOLOGIN: 1
+            ADMINER_NAME: DB Admin for sibernetik
+        ports:
+            - "9999:8080"
+        networks:
+            - sibernetik-net
+            - cloud-net
+
+
+###############################################################################################
+
+### Networks to be created to facilitate communication between containers ###
+
+###############################################################################################
+
+networks:
+    cloud-net:
+        driver: bridge
+    sibernetik-net:
+
+###############################################################################################
+
+### Volumes to be created to facilitate to share resources between containers ###
+
+###############################################################################################
+
+volumes:
+    disk-ui:
+    disk-db:
+
